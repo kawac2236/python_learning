@@ -1,0 +1,23 @@
+version: '3'
+services:
+  jupyterlab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python_work
+    ports:
+    - "8888:8888"
+    volumes:
+    - .:/workdir
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python_work
+    ports:
+      - "5000:5000"
+    volumes:
+      - ".:/workdir"
+    tty: true
+    environment:
+      TZ: Asia/Tokyo
